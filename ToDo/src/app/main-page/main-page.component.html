@@ -1,6 +1,3 @@
-
-
-
 <!-- Head and bar colors -->
 <div class="top-bar">
   <h1>Jolly To-Do</h1>
@@ -26,11 +23,14 @@
   </div>
 </section>
 
-<div *ngIf="formDisplay" class="modal-is-active"> 
- <!-- ^^^toggles the modal^^^ -->
+<div *ngIf="formDisplay" class="modal-is-active">
+  <!-- ^^^toggles the modal^^^ -->
   <div class="modal-background"></div>
   <div class="modal-content">
-    <todo-form (todoForm)="newToDoItem($event)" (close)="modalClose($event)" ></todo-form>
+    <todo-form
+      (todoForm)="newToDoItem($event)"
+      (close)="modalClose($event)"
+    ></todo-form>
   </div>
   <button
     class="modal-close is-large"
@@ -39,20 +39,17 @@
   ></button>
 </div>
 
-
 <section *ngIf="!formDisplay" class="body-is-large">
-   <!--^^^^ toggles the item cards off when the new item form modal
+  <!--^^^^ toggles the item cards off when the new item form modal
     is activated to allow the modal to display more cleanly -->
-    <div class="control" >
-    <!-- *ngFor="let items of toDoArray" -->
-    
-            <todo-item-card>
-
-            </todo-item-card>
-    </div>
-<!-- <h3>test</h3> -->
+  <div class="control">
+    <todo-item-card></todo-item-card>
+  </div>
 </section>
-
-
- 
-
+<section #completed class="body-is-large">
+  <!--^^^^ toggles the item cards off when the new item form modal
+    is activated to allow the modal to display more cleanly -->
+  <div class="control">
+    <completed-cards></completed-cards>
+  </div>
+</section>

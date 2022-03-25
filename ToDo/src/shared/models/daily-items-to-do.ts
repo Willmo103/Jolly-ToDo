@@ -1,4 +1,3 @@
-import { ToDoItem } from "./to-do-item-class";
 
 export class DailyTodo {
     title: string;

@@ -9,7 +9,7 @@ export class ToDoItem {
     constructor(public title: string, public content: string, due: Boolean, dueDate: Date, priority: string){
 
         if(due = true){
-            this.dueDate = dueDate
+            this.dueDate = dueDate;
         };
         this.priority = priority;
         if (this.priority === "Low"){
@@ -18,6 +18,8 @@ export class ToDoItem {
             this.pointVal = 10;
         } else if (this.priority === "High") {
             this.pointVal = 20;
-        }
-    }
-}
+        } else if (this.priority === "Daily") { 
+            this.pointVal = 2;
+        };
+    };
+};

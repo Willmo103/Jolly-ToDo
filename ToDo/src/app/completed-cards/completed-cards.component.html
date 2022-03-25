@@ -1,0 +1,21 @@
+
+<section class="is-large-is-narrow">
+    <div class="modal-background">
+    <div class="card" *ngFor="let card of completedArr">
+        
+        <div class="card-header">
+            <p class="card-header-title">
+                {{card.title}}
+            </p>
+            <p class="card-header-icon">
+                <span class="title is-5">Points:
+                     <span class="pointVal">{{card.pointVal}}</span></span>
+            </p>
+        </div>
+        <div class="card-content">
+            <p class="content"> {{card.content}} </p>
+        </div>
+    </div>
+</div>    
+</section>
+    
