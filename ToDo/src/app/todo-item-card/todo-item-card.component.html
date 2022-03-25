@@ -1,0 +1,26 @@
+
+<section class="is-large-is-narrow">
+<div class="card" *ngFor="let card of cardArr">
+    
+    <div class="card-header">
+        <p class="card-header-title">
+            {{card.title}}
+        </p>
+        <p class="card-header-icon">
+            <span class="title is-5">Points: <span class="pointVal">{{card.pointVal}}</span></span>
+        </p>
+    </div>
+    <div class="card-content">
+        <p class="content">Lorem ipsum dolor sit amet, consectetur 
+            adipisicing elit. Suscipit odio est molestias odit? 
+            Similique quis velit dolorum, laborum obcaecati itaque 
+            modi autem dolor, delectus dolorem nobis beatae non 
+            alias? Suscipit.</p>
+    </div>
+    <div class="card-footer">
+        <a href="#" class="card-footer-item">Edit</a>
+        <a href="#" class="card-footer-item">Delete</a>
+        <a href="#" class="card-footer-item">Complete</a>
+    </div>
+</div>
+</section>
