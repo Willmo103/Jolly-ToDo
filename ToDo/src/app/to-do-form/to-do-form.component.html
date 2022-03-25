@@ -1,0 +1,68 @@
+<body>
+  <form class="box" #todoForm="ngForm" (submit)="onSubmit(todoForm)">
+    <div class="container is-fluid">
+      <section class="block">
+        <h1 class="title">New Item</h1>
+      </section>
+
+      <label for="title" class="label is-large"> Task </label>
+
+      <input
+        class="block"
+        type="text"
+        name="title"
+        placeholder="to do title here"
+        ngModel
+      />
+
+      <label for="content" class="label is-large"> Notes </label>
+
+      <textarea
+        class="block"
+        name="content"
+        cols="25"
+        rows="5"
+        placeholder="Notes..."
+        ngModel
+      ></textarea>
+
+      <div class="control block">
+        <label class="label is-medium" for="priority"> Priority </label>
+
+        <label class="radio">
+          Low
+
+          <input type="radio" name="priority" value="Low" ngModel />
+        </label>
+
+        <label class="radio">
+          Medium
+
+          <input type="radio" name="priority" value="Medium" ngModel />
+        </label>
+
+        <label class="radio">
+          High
+          <input type="radio" name="priority" value="High" ngModel />
+        </label>
+      </div>
+      <div class="feild is-grouped block">
+        <label class="label is-medium" for="isDue">Due Date?</label>
+        <input type="checkbox" name="isDue" (input)="isDue()" ngModel />
+      </div>
+      <div *ngIf="due" class="block">
+        <label class="label"
+          >Due Date &nbsp;&nbsp;<input type="date" name="dueDate" ngModel
+        /></label>
+      </div>
+      <div class="field is-grouped block">
+        <p class="control">
+          <button class="button is-primary" type="submit">Submit</button>
+        </p>
+        <p class="control">
+          <button class="button is-light" (click)="modalClose()"> Cancel </button>
+        </p>
+      </div>
+    </div>
+  </form>
+</body>

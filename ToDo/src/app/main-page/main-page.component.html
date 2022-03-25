@@ -1,0 +1,58 @@
+
+
+
+<!-- Head and bar colors -->
+<div class="top-bar">
+  <h1>Jolly To-Do</h1>
+</div>
+
+<section class="point-total">
+  <h2 class="points">
+    <!-- Ability to display the points on this card per the priority
+    value set at the form submission -->
+    Points: <span class="points-color">{{ points }}</span>
+  </h2>
+</section>
+
+<section class="button-section">
+  <div class="buttons">
+    <div class="control is-wide">
+      <p class="control">
+        <!-- displayForm() function sets the boolean val to toggle the form modal -->
+        <a class="button is is-light" (click)="displayForm()">New Task</a>
+        <a class="button">Manage Daily Tasks</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<div *ngIf="formDisplay" class="modal-is-active"> 
+ <!-- ^^^toggles the modal^^^ -->
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <todo-form (todoForm)="newToDoItem($event)" (close)="modalClose($event)" ></todo-form>
+  </div>
+  <button
+    class="modal-close is-large"
+    aria-label="close"
+    (click)="displayForm()"
+  ></button>
+</div>
+
+
+<section *ngIf="!formDisplay" class="body-is-large">
+   <!--^^^^ toggles the item cards off when the new item form modal
+    is activated to allow the modal to display more cleanly -->
+    <div class="control" >
+    <!-- *ngFor="let items of toDoArray" -->
+    
+            <todo-item-card>
+
+            </todo-item-card>
+    </div>
+<!-- <h3>test</h3> -->
+</section>
+
+
+ 
+
