@@ -10,21 +10,17 @@ import { ToDoItem } from 'src/shared/models/to-do-item-class';
 })
 export class TodoItemCardComponent implements OnInit {
 
-  // @Output() cardDetails: EventEmitter<ToDoItem> = new EventEmitter<ToDoItem>();
+  @Output() updatePoints: EventEmitter<number> = new EventEmitter<number>();
+  @Output() editEntry: EventEmitter<ToDoItem> = new EventEmitter<ToDoItem>();
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  cardArr: ToDoItem[] = itemArray;
+    cardArr: ToDoItem[] = itemArray;/* mirrors the shared array
+   to pass completed ToDoItems into and read them out of*/
 
-  editTask(item: ToDoItem){
-    /*send the index of item in the array to 
-    the form for changes and save the new values.*/
-    console.log("edit");
-  }
-
-  deleteTask(item: ToDoItem){
+  deleteTask(item: ToDoItem) {
     /*send the card to this function to delete 
     it from the array */
     let index: number = itemArray.indexOf(item)
@@ -32,15 +28,23 @@ export class TodoItemCardComponent implements OnInit {
     // console.log("delete", index, itemArray);
   }
 
-  completeTask(item: ToDoItem){
+  editTask(item: ToDoItem) {
+    /*send the index of item in the array to 
+    the form for changes and save the new values.*/
+    this.deleteTask(item);
+    this.editEntry.emit(item);
+
+    console.log("edit");
+  }
+
+  completeTask(item: ToDoItem) {
     /*move the card to the "completed Array" 
     and add the point value of the card to the 
     displayed point value on the main page component */
     completedItems.push(item);
-    console.log("complete");
-    let index: number = itemArray.indexOf(item)
-    itemArray.splice(index, 1);
-    
+    this.deleteTask(item);
+    this.updatePoints.emit(item.pointVal);
+
 
   }
 

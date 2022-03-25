@@ -11,11 +11,10 @@
         </p>
     </div>
     <div class="card-content">
-        <p class="content">Lorem ipsum dolor sit amet, consectetur 
-            adipisicing elit. Suscipit odio est molestias odit? 
-            Similique quis velit dolorum, laborum obcaecati itaque 
-            modi autem dolor, delectus dolorem nobis beatae non 
-            alias? Suscipit.</p>
+        <p class="content">{{card.content}} <span *ngIf="card.due">{{card.dueDate}}</span></p>
+            
+            
+        
     </div>
     <div class="card-footer">
         <a href="#" class="card-footer-item" (click)="editTask(card)">Edit</a>

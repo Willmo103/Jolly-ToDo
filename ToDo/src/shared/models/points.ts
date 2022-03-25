@@ -1,0 +1,1 @@
+export const points: number = 0; 

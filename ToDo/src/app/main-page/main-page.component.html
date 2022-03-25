@@ -7,7 +7,7 @@
   <h2 class="points">
     <!-- Ability to display the points on this card per the priority
     value set at the form submission -->
-    Points: <span class="points-color">{{ points }}</span>
+    Points: <span class="points-color">{{ displayPoints }}</span>
   </h2>
 </section>
 
@@ -18,7 +18,7 @@
         <!-- displayForm() function sets the boolean val to toggle the form modal -->
         <a class="button is is-light" (click)="displayForm()">New Task</a>
         <a class="button">Manage Daily Tasks</a>
-        <a class="button" (click)="showCompleted = true">View Completed Tasks
+        <a class="button" (click)="completed()">View Completed Tasks
         </a>
       </p>
     </div>
@@ -34,25 +34,33 @@
       (close)="modalClose($event)"
     ></todo-form>
   </div>
-  <button
+  <!-- <button
     class="modal-close is-large"
     aria-label="close"
     (click)="displayForm()"
-  ></button>
+  ></button> -->
 </div>
 
 <section *ngIf="!formDisplay" class="body-is-large">
   <!--^^^^ toggles the item cards off when the new item form modal
     is activated to allow the modal to display more cleanly -->
-  <div class="control">
-    <todo-item-card></todo-item-card>
+  <div *ngIf="!showCompleted" class="control">
+    <todo-item-card (updatePoints)="completeTally($event)"></todo-item-card>
   </div>
 </section>
 
-<section *ngIf="showCompleted" class="body-is-large">
-  <!--^^^^ toggles the item cards off when the new item form modal
-    is activated to allow the modal to display more cleanly -->
+<div *ngIf="showCompleted" class="modal-is-active">
+  <!-- ^^^toggles the modal for completed items^^^ -->
+  <div class="modal-background"></div>
+  <div class="modal-content">
   <div class="control">
     <completed-cards></completed-cards>
   </div>
-</section>
+  <button
+    class="modal-close is-large"
+    aria-label="close"
+    (click)="completed()"
+  ></button>
+  </div>
+</div>
+

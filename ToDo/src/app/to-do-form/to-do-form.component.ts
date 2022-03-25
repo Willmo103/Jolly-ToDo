@@ -9,7 +9,7 @@ import { ToDoItem } from '../../shared/models/to-do-item-class';
 })
 export class ToDoFormComponent implements OnInit {
 
-  @Input() item: ToDoItem = new ToDoItem('', '', false, new Date(), '');
+  @Input() editEntry: ToDoItem = new ToDoItem('', '', false, new Date(), '');
   /* ^^ this will allow for the editing of the to do task by opening the modal
    with the populated values of the ToDoItem. */
   @Output() todoForm: EventEmitter<object> = new EventEmitter<object>();
@@ -42,6 +42,10 @@ export class ToDoFormComponent implements OnInit {
   modalClose() { 
     //sends event to toggle form modal in main component.
     this.close.emit();
+  }
+
+  OpenEditForm(item:ToDoItem){
+    this.todoForm
   }
 
 }

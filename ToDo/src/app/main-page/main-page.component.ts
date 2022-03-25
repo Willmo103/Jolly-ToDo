@@ -1,16 +1,14 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ToDoItem } from '../../shared/models/to-do-item-class';
 import { itemArray } from 'src/shared/models/ItemArray';
-
 
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.scss']
 })
-export class MainPageComponent implements OnInit {
 
+export class MainPageComponent implements OnInit {
 
   // toDoItems: ToDoItem[] = new Array<ToDoItem>(); /* <-- array of the items stored and displayed via the cards.*/
   @Output() cardContent: EventEmitter<ToDoItem> = new EventEmitter<ToDoItem>();
@@ -27,7 +25,10 @@ export class MainPageComponent implements OnInit {
 
   showCompleted: Boolean = false; // <--toggles the completed item cards view.
   
+  displayPoints: number = 0;// <- shared points number
+
   constructor() { }
+  
   ngOnInit(): void {
   }
 
@@ -41,6 +42,15 @@ export class MainPageComponent implements OnInit {
     }
   }
 
+  
+  completed() { 
+    // the function used to toggle modal by main page buttons.
+    if (this.showCompleted === false) {
+      this.showCompleted = true;
+    } else {
+      this.showCompleted = false;
+    }
+  }
 
   modalClose(x: void) { 
     //toggle modal by the form component event emitter.
@@ -50,8 +60,14 @@ export class MainPageComponent implements OnInit {
 
   
   newToDoItem(todo: any) {
+    /* receives form information and creates a 
+    ToDoItem and pushes it into the shared itemArray */
     let item = new ToDoItem(todo.title, todo.content, todo.due, todo.dueDate, todo.priority);
     itemArray.push(item);
-    console.log(item);
+    // console.log(item);
+  }
+
+  completeTally(points: number){
+    this.displayPoints += points;
   }
 }
