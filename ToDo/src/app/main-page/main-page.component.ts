@@ -25,6 +25,8 @@ export class MainPageComponent implements OnInit {
   cancel and submit button on the todo-form, and the new task 
   button on the main page component.*/
 
+  showCompleted: Boolean = false; // <--toggles the completed item cards view.
+  
   constructor() { }
   ngOnInit(): void {
   }

@@ -36,10 +36,11 @@ export class TodoItemCardComponent implements OnInit {
     /*move the card to the "completed Array" 
     and add the point value of the card to the 
     displayed point value on the main page component */
+    completedItems.push(item);
     console.log("complete");
     let index: number = itemArray.indexOf(item)
     itemArray.splice(index, 1);
-    completedItems.push(item);
+    
 
   }
 
