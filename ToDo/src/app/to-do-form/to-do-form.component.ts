@@ -1,3 +1,4 @@
+import { NullVisitor } from '@angular/compiler/src/render3/r3_ast';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormsModule, NgForm, NgModel } from '@angular/forms';
 import { ToDoItem } from '../../shared/models/to-do-item-class';
@@ -9,14 +10,13 @@ import { ToDoItem } from '../../shared/models/to-do-item-class';
 })
 export class ToDoFormComponent implements OnInit {
 
-  @Input() editEntry: ToDoItem = new ToDoItem('', '', false, new Date(), '');
+  @Input()editIndex!: number;
   /* ^^ this will allow for the editing of the to do task by opening the modal
    with the populated values of the ToDoItem. */
   @Output() todoForm: EventEmitter<object> = new EventEmitter<object>();
   /* ^^output for the form values to the main body component */
   @Output() close: EventEmitter<void> = new EventEmitter<void>();
   /* ^^ output event to close the modal on the main page component */
-
 
   hideModel: Boolean = true;
   due: Boolean = false; //<-- boolean value to hide the date input field 
@@ -25,6 +25,7 @@ export class ToDoFormComponent implements OnInit {
     //toggles boolean to hide date input field 
     if (!this.due) { this.due = true } else { this.due = false }
   }
+
   constructor() { }
 
   ngOnInit(): void {
@@ -35,17 +36,11 @@ export class ToDoFormComponent implements OnInit {
      close the form modal to the main component.*/
     this.todoForm.emit(form.value);
     this.modalClose()
-    // console.log(form.value)
-    // console.log();
   }
   
   modalClose() { 
     //sends event to toggle form modal in main component.
     this.close.emit();
-  }
-
-  OpenEditForm(item:ToDoItem){
-    this.todoForm
   }
 
 }

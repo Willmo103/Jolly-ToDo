@@ -52,11 +52,11 @@ background-color: lighten(purple, 6%);
 
 // }
 
-.body-is-large{
-  display: block;
-  background-color: lighten(gray, 35%);
-  height: 100%;
-}
+// .body-is-large{
+//   display: flex;
+//   background-color: lighten(gray, 35%);
+//   height: 100%;
+// }
 
 container{
   flex-basis: auto;
@@ -68,3 +68,11 @@ container{
 //   justify-content: center;
 //   display: block;
 // }
+
+.box-left{
+  display: flexbox;
+}
+
+.box-right{
+  display: flexbox;
+}

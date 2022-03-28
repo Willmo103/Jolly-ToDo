@@ -1,12 +1,33 @@
 @import "../../../node_modules/bulma/bulma.sass";
 
+
+
 .card{
 //     width: 300px;
 //     height: 175px;
-    margin: 6px;
+    // margin: 6pSx;
+    padding: 6px;
+    // max-width: 47%;
 // }
 }
 
 .card-header{
     background-color: lighten(cadetblue, 15%)
+}
+
+.high{
+    background-color: lighten(maroon, 46%);
+}
+.medium{
+    background-color: rgb(255, 232, 21);
+}
+
+.hidden{
+    display: none;
+}
+
+.column-is-half { 
+    padding-top: 12px;
+    padding-left: 3px;
+    padding-right: 3px;
 }

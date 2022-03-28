@@ -1,25 +1,92 @@
-
-<section class="is-large-is-narrow">
-<div class="card" *ngFor="let card of cardArr">
+<div class="columns">
+  <div class="column-is-half">
     
-    <div class="card-header">
+<div *ngFor="let card of right">
+    <div class="card">
+      <div
+        class="card-header"
+        [class.high]="card.priority === 'High'"
+        [class.medium]="card.priority === 'Medium'"
+        [class.low]="card.priority === 'Low'"
+      >
+        <!-- styles the header of the of the card component
+  depending on the priority set at form submission -->
         <p class="card-header-title">
-            {{card.title}}
+          TO-DO: {{ card.title }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Due Date:&nbsp;
+          <span [class.hidden]="card.dueDate">Anytime</span>
+          <span [class.hidden]="!card.dueDate">{{ card.dueDate }}</span>
+          <!-- toggles the due date to date provided if any, or 'anytime' -->
         </p>
         <p class="card-header-icon">
-            <span class="title is-5">Points: <span class="pointVal">{{card.pointVal}}</span></span>
+          <span class="title is-5"
+            >Points:
+            <span class="pointVal">{{ card.pointVal }}</span>
+          </span>
         </p>
-    </div>
-    <div class="card-content">
-        <p class="content">{{card.content}} <span *ngIf="card.due">{{card.dueDate}}</span></p>
-            
-            
-        
-    </div>
-    <div class="card-footer">
+      </div>
+      <div class="card-content">
+        <p class="content">
+          <!-- {{ card.content }} -->
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. In labore
+          expedita porro ipsum nemo eos omnis ducimus maiores nihil rerum, natus
+          architecto nesciunt alias quia temporibus itaque aut deserunt vitae?
+        </p>
+      </div>
+      <div class="card-footer">
         <a href="#" class="card-footer-item" (click)="editTask(card)">Edit</a>
-        <a href="#" class="card-footer-item" (click)="deleteTask(card)">Delete</a>
-        <a href="#" class="card-footer-item" (click)="completeTask(card)">Complete</a>
+        <a href="#" class="card-footer-item" (click)="deleteTask(card)"
+          >Delete</a
+        >
+        <a href="#" class="card-footer-item" (click)="completeTask(card)"
+          >Complete</a
+        >
+      </div>
     </div>
+  </div>
+  </div>
+
+
+  <div class="column-is-half">
+<div *ngFor="let card of left">
+  <div class="card">
+      <div
+        class="card-header"
+        [class.high]="card.priority === 'High'"
+        [class.medium]="card.priority === 'Medium'"
+        [class.low]="card.priority === 'Low'"
+      >
+        <!-- styles the header of the of the card component
+  depending on the priority set at form submission -->
+        <p class="card-header-title">
+          TO-DO: {{ card.title }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Due Date:&nbsp;
+          <span [class.hidden]="card.dueDate">Anytime</span>
+          <span [class.hidden]="!card.dueDate">{{ card.dueDate }}</span>
+          <!-- toggles the due date to date provided if any, or 'anytime' -->
+        </p>
+        <p class="card-header-icon">
+          <span class="title is-5"
+            >Points:
+            <span class="pointVal">{{ card.pointVal }}</span>
+          </span>
+        </p>
+      </div>
+      <div class="card-content">
+        <p class="content">
+          <!-- {{ card.content }} -->
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. In labore
+          expedita porro ipsum nemo eos omnis ducimus maiores nihil rerum, natus
+          architecto nesciunt alias quia temporibus itaque aut deserunt vitae?
+        </p>
+      </div>
+      <div class="card-footer">
+        <a href="#" class="card-footer-item" (click)="editTask(card)">Edit</a>
+        <a href="#" class="card-footer-item" (click)="deleteTask(card)"
+          >Delete</a
+        >
+        <a href="#" class="card-footer-item" (click)="completeTask(card)"
+          >Complete</a
+        >
+      </div>
+    </div>
+  </div>
 </div>
-</section>

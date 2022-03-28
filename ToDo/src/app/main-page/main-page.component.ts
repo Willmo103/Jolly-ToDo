@@ -1,6 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ToDoItem } from '../../shared/models/to-do-item-class';
 import { itemArray } from 'src/shared/models/ItemArray';
+import { leftArr } from 'src/shared/models/leftArray';
+import { rightArr } from 'src/shared/models/rightArray';
 
 @Component({
   selector: 'app-main-page',
@@ -12,9 +14,11 @@ export class MainPageComponent implements OnInit {
 
   // toDoItems: ToDoItem[] = new Array<ToDoItem>(); /* <-- array of the items stored and displayed via the cards.*/
   @Output() cardContent: EventEmitter<ToDoItem> = new EventEmitter<ToDoItem>();
+  // @Output() reSort: EventEmitter<void> = new EventEmitter<void>();
+  // @Output() editForm: EventEmitter<object> = new EventEmitter<object>();
   
   toDoArray: ToDoItem[] = itemArray;
-  // created a shared array to make sharing easier made a variable here to mirrior sahred array
+  /*created a shared array to make sharing easier made a variable here to mirror shared array*/
 
   points: number = 0; /*<-- Value total of the point score for
   marking items complete.*/
@@ -42,7 +46,6 @@ export class MainPageComponent implements OnInit {
     }
   }
 
-  
   completed() { 
     // the function used to toggle modal by main page buttons.
     if (this.showCompleted === false) {
@@ -56,18 +59,48 @@ export class MainPageComponent implements OnInit {
     //toggle modal by the form component event emitter.
     this.formDisplay = false;
   }
-
-
   
+  completeTally(points: number){
+    this.displayPoints += points;
+  }
+
+  sort(item: ToDoItem){
+    if (itemArray.indexOf(item) % 2 === 1){
+      rightArr.push(item)
+    } else {
+      leftArr.push(item)
+    }
+  }
+
+  organize(){
+    if (rightArr.length === leftArr.length){
+      return;
+    }  
+    if (rightArr.length > leftArr.length && rightArr.length !== 0){
+      leftArr.push(rightArr[rightArr.length - 1]);
+      rightArr.pop();
+    } else if (leftArr.length > rightArr.length && leftArr.length !== 0){ 
+      rightArr.push(leftArr[leftArr.length - 1]);
+      leftArr.pop();
+    } 
+  }
+
   newToDoItem(todo: any) {
     /* receives form information and creates a 
     ToDoItem and pushes it into the shared itemArray */
     let item = new ToDoItem(todo.title, todo.content, todo.due, todo.dueDate, todo.priority);
     itemArray.push(item);
-    // console.log(item);
+    this.sort(item);
+    this.organize()
+
+    // console.log(leftArr, rightArr);
   }
 
-  completeTally(points: number){
-    this.displayPoints += points;
-  }
+  // openEditForm(revObj: any){
+  //   // pass card values to the form modal, open the form, 
+  //   // let index = revObj.index
+  //   // console.log(revObj)
+  //   this.editForm.emit(revObj);
+  //   console.log(revObj)
+  // }
 }
