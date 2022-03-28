@@ -55,11 +55,11 @@ export class TodoItemCardComponent implements OnInit {
     completedItems.push(item);
     this.deleteTask(item);
     this.updatePoints.emit(item.pointVal);
-    this.organize;
+    this.organize();
   }
 
   organize(){
-    if (rightArr.length === leftArr.length){
+    if (rightArr.length === leftArr.length + 1){
       return;
     }  
     if (rightArr.length > leftArr.length && rightArr.length !== 0){

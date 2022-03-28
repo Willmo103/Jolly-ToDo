@@ -1,11 +1,11 @@
 <body>
   <form class="box" #todoForm="ngForm" (submit)="onSubmit(todoForm)">
-    <div class="container is-fluid">
+    <div class="container is-fluid" id="form-container">
       <section class="block">
-        <h1 class="title">New Item</h1>
+        <h1 class="title" style="text-align: center;">New Item</h1>
       </section>
 
-      <label for="title" class="label is-large"> Task </label>
+      <label for="title" class="label is-large" > Task </label>
 
       <input
         class="block"

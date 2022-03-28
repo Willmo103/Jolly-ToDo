@@ -73,7 +73,7 @@ export class MainPageComponent implements OnInit {
   }
 
   organize(){
-    if (rightArr.length === leftArr.length){
+    if (rightArr.length === leftArr.length + 1){
       return;
     }  
     if (rightArr.length > leftArr.length && rightArr.length !== 0){
