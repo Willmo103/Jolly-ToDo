@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { MainPageComponent } from './main-page/main-page.component';
 import { TodoItemCardComponent } from './todo-item-card/todo-item-card.component';
 import { CompletedCardsComponent } from './completed-cards/completed-cards.component';
+import { EditFormComponent } from './edit-form/edit-form.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { CompletedCardsComponent } from './completed-cards/completed-cards.compo
     ToDoFormComponent,
     MainPageComponent,
     TodoItemCardComponent,
-    CompletedCardsComponent
+    CompletedCardsComponent,
+    EditFormComponent
   ],
   imports: [
     BrowserModule,

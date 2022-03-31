@@ -17,7 +17,7 @@
       <p class="control">
         <!-- displayForm() function sets the boolean val to toggle the form modal -->
         <a class="button is is-light" (click)="displayForm()">New Task</a>
-        <a class="button">Manage Daily Tasks</a>
+        <!-- <a class="button">Manage Daily Tasks</a> -->
         <a class="button" (click)="completed()">View Completed Tasks </a>
       </p>
     </div>
@@ -36,12 +36,24 @@
     </div>
   </div>
 
-  <div *ngIf="!formDisplay" class="body-is-large">
+  <div *ngIf="editDisplay" class="modal-is-active">
+    <!-- ^^^toggles the modal^^^ -->
+    <div class="modal-background"></div>
+    <div class="modal-content">
+     <edit-form
+     [editEntry]="editEntry[0]"
+     (close)="editClose($event)"
+     (deleteEditEntry)="deleteEditEntry($event)"
+     ></edit-form>
+    </div>
+  </div>
+
+  <div *ngIf="!formDisplay && !editDisplay" class="body-is-large">
     <!--^^^^ toggles the item cards off when the new item form modal
     is activated to allow the modal to display more cleanly -->
     <div *ngIf="!showCompleted">
       
-        <todo-item-card (updatePoints)="completeTally($event)">
+        <todo-item-card (updatePoints)="completeTally($event)" (editEntry)="edit($event)" >
         </todo-item-card>
       
     </div>

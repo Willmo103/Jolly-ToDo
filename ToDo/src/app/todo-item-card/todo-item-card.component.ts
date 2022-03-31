@@ -18,7 +18,7 @@ export class TodoItemCardComponent implements OnInit {
   }
 
   @Output() updatePoints: EventEmitter<number> = new EventEmitter<number>();
-  @Output() editEntry: EventEmitter<number> = new EventEmitter<number>();
+  @Output() editEntry: EventEmitter<ToDoItem> = new EventEmitter<ToDoItem>();
   
   cardArr: ToDoItem[] = itemArray;/* mirrors the shared array
    to pass completed ToDoItems into and read them out of*/
@@ -43,9 +43,18 @@ export class TodoItemCardComponent implements OnInit {
     /*send the index of item in the array to 
     the form for changes and save the new values.*/
     // this.deleteTask(item);
-    let index: number = this.cardArr.indexOf(item);
-    this.editEntry.emit(index);
-    console.log("index: " + index);
+    let index: number;
+    console.log(item);
+    if (leftArr.includes(item)){
+      index = leftArr.indexOf(item);
+      this.editEntry.emit(leftArr[index]);
+      // console.log(index + "Left");
+    } else if (rightArr.includes(item)){
+      index = rightArr.indexOf(item);
+      this.editEntry.emit(rightArr[index])
+      // console.log(index + "Right");
+
+    }
   }
 
   completeTask(item: ToDoItem) {
@@ -70,4 +79,6 @@ export class TodoItemCardComponent implements OnInit {
       leftArr.pop();
     } 
   }
+
+
 }

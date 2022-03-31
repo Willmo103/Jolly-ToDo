@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { ToDoItem } from '../../shared/models/to-do-item-class';
 import { itemArray } from 'src/shared/models/ItemArray';
 import { leftArr } from 'src/shared/models/leftArray';
@@ -31,11 +31,23 @@ export class MainPageComponent implements OnInit {
   
   displayPoints: number = 0;// <- shared points number
 
+  editEntry: ToDoItem[] = [];
+  
+  editDisplay: Boolean = false;
+
+
+
   constructor() { }
   
   ngOnInit(): void {
   }
 
+
+  edit(item: ToDoItem){
+    this.editEntry[0] = item
+    this.editDisplay = true
+    // console.log(this.editEntry);
+  }
 
   displayForm() { 
     // the function used to toggle modal by main page buttons.
@@ -92,15 +104,14 @@ export class MainPageComponent implements OnInit {
     itemArray.push(item);
     this.sort(item);
     this.organize()
-
-    // console.log(leftArr, rightArr);
   }
 
-  // openEditForm(revObj: any){
-  //   // pass card values to the form modal, open the form, 
-  //   // let index = revObj.index
-  //   // console.log(revObj)
-  //   this.editForm.emit(revObj);
-  //   console.log(revObj)
-  // }
+  editClose(x: void){
+    this.editDisplay = false
+  }
+
+  deleteEditEntry(x: void){
+    this.editEntry.splice(0, 1);
+  }
+  
 }

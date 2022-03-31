@@ -7,7 +7,7 @@ export class ToDoItem {
     completed: Boolean = false;
 
     constructor(public title: string, public content: string, due: Boolean, dueDate: Date, priority: string){
-
+        this.due = due;
         if(due = true){
             this.dueDate = dueDate;
         };
