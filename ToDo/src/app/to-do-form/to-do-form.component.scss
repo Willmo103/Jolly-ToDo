@@ -1,36 +1,36 @@
 @import "../../../node_modules/bulma/sass/utilities/_all.sass";
 
 body {
-    align-items: center;
-    justify-content: center;
-    display: flex;
+  align-items: center;
+  justify-content: center;
+  display: flex;
 }
 
 .block:not(:last-child) {
-    margin-bottom: 1rem;
-  }
-
-  form {
-      width: 250px;
-      padding: 8px;
-    }
-
-  .checkBox {
-      padding-left: 30px;
-  }
-
-  .delete{ 
-    position: absolute;
-    top: -12px;
-    left: 230px
-  }
-.hidden{
-    display: none;
+  margin-bottom: 1rem;
 }
-  
-#form-container{
-    padding-left: 20px;
-      padding-right: 20px;
-      padding-top: 12px;
-      padding-bottom: 12px;
+
+form {
+  width: 250px;
+  padding: 8px;
+}
+
+.checkBox {
+  padding-left: 30px;
+}
+
+.delete {
+  position: absolute;
+  top: -12px;
+  left: 230px;
+}
+.hidden {
+  display: none;
+}
+
+#form-container {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 12px;
+  padding-bottom: 12px;
 }

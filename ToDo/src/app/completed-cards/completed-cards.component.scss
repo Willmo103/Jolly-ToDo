@@ -1,3 +1,12 @@
+*{
+    justify-items:flex-start;
+}
+#cards{
+    max-height: fit-content;
+    max-width: fit-content;
+    display: flex;
+    
+}
 .card{
     //     width: 300px;
     //     height: 175px;
@@ -16,3 +25,5 @@
     .medium{
         background-color: rgb(255, 232, 21);
     }
+
+   

@@ -12,13 +12,13 @@
         <!-- styles the header of the of the card component
   depending on the priority set at form submission -->
         <p class="card-header-title">
-          TO-DO: {{ card.title }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Due Date:&nbsp;
-          <span [class.hidden]="card.dueDate">Anytime</span>
+          TO-DO: {{ card.title }} &nbsp;&nbsp;&nbsp;&nbsp;<span>Due Date:
+          <span [class.hidden]="card.dueDate">Anytime</span></span>
           <span [class.hidden]="!card.dueDate">{{ card.dueDate }}</span>
           <!-- toggles the due date to date provided if any, or 'anytime' -->
         </p>
         <p class="card-header-icon">
-          <span class="title is-5"
+          <span class="title is-6"
             >Points:
             <span class="pointVal">{{ card.pointVal }}</span>
           </span>
@@ -26,10 +26,10 @@
       </div>
       <div class="card-content">
         <p class="content">
-          <!-- {{ card.content }} -->
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. In labore
+          {{ card.content }}
+          <!-- Lorem ipsum dolor sit amet consectetur, adipisicing elit. In labore
           expedita porro ipsum nemo eos omnis ducimus maiores nihil rerum, natus
-          architecto nesciunt alias quia temporibus itaque aut deserunt vitae?
+          architecto nesciunt alias quia temporibus itaque aut deserunt vitae? -->
         </p>
       </div>
       <div class="card-footer">
@@ -58,13 +58,13 @@
         <!-- styles the header of the of the card component
   depending on the priority set at form submission -->
         <p class="card-header-title">
-          TO-DO: {{ card.title }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Due Date:&nbsp;
+          TO-DO: {{ card.title }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="is-narrow">Due Date:&nbsp;
           <span [class.hidden]="card.dueDate">Anytime</span>
-          <span [class.hidden]="!card.dueDate">{{ card.dueDate }}</span>
+          <span [class.hidden]="!card.dueDate">{{ card.dueDate }}</span></span>
           <!-- toggles the due date to date provided if any, or 'anytime' -->
         </p>
         <p class="card-header-icon">
-          <span class="title is-5"
+          <span class="title is-6"
             >Points:
             <span class="pointVal">{{ card.pointVal }}</span>
           </span>
@@ -72,10 +72,10 @@
       </div>
       <div class="card-content">
         <p class="content">
-          <!-- {{ card.content }} -->
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. In labore
+          {{ card.content }}
+          <!-- Lorem ipsum dolor sit amet consectetur, adipisicing elit. In labore
           expedita porro ipsum nemo eos omnis ducimus maiores nihil rerum, natus
-          architecto nesciunt alias quia temporibus itaque aut deserunt vitae?
+          architecto nesciunt alias quia temporibus itaque aut deserunt vitae? -->
         </p>
       </div>
       <div class="card-footer">
